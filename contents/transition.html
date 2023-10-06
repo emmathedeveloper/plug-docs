@@ -1,0 +1,118 @@
+<section class="content">
+
+    <section>
+        <h2>Transitions</h2>
+
+        <p>
+            Since you've been going through the docs, you might have noticed the way content slides in when you go from one chapter to another.
+            This is possible with what we call a <span class="highlight-primary">TransitionFunction</span> in plug.
+        </p>
+
+        <div class="code">
+            <code>
+
+    export function scaleIn(options) {
+
+        let duration = options?.duration || 1000
+
+        let delay = options?.duration || 0
+
+        return () => {
+
+            return {
+                delay,
+                duration,
+                from: {
+                    opacity: 0,
+                    transform: `scale(0)`
+                },
+                to: {
+                    opacity: 1
+                    transform: `scale(1)`
+                },
+                exit:{
+                    opacity: 0,
+                    transform: `scale(0)`
+                }
+            }
+        }
+    }
+            </code>
+        </div>
+
+        <p>
+            In the above code, the function <b>scaleIn</b> takes in <span class="highlight-primary">TransitionOptions</span> and returns a <b>TransitionFunction</b>, then the <b>TransitionFunction</b> returns a <span class="highlight-primary">TransitionConfig</span>.
+        </p>
+
+        <p>
+            The <b>TransitionFunction</b> can optionally take in a <b>node</b> in case you want to get the original styles of that node for your transition, example below:
+        </p>
+
+        <div class="code">
+            <code>
+    export function fade(options) {
+
+        let duration = options?.duration || 1000
+
+        let delay = options?.duration || 0
+    
+        return (node) => {
+
+            const style = getComputedStyle(node)
+    
+            return {
+                delay,
+                duration,
+                from: {
+                    opacity: 0
+                },
+                to: {
+                    opacity: style.opacity
+                },
+                exit:{
+                    opacity: 0
+                }
+            }
+        }
+    }
+            </code>
+        </div>
+
+        <p>
+            The <b>TransitionConfig</b> has some fields in it: <br>
+
+            <b>delay</b>: the number of milliseconds to wait before the transition starts. <br>
+            <b>duration</b>: how long the transition should run in milliseconds. <br>
+            <b>from</b>: describes the state from which the transition would start. <br>
+            <b>to</b>: describes the target state at which the transition would end. <br>
+            <b>exit</b>: the state at which the transition would go to before the widget is destroyed.
+        </p>
+
+    </section>
+
+    <section>
+        <h2>Using Transitions</h2>
+
+        <p>
+            You can use a transition on a widget by passing the desired transition to the <b>transition</b> field of the widget's config:
+        </p>
+
+        <div class="code">
+            <code>
+    Text('Hi mom' , { transition: fade() })
+            </code>
+        </div>
+
+        <p>
+            Now the Text widget in the code above would run the <b>fade</b> transition when mounted.
+        </p>
+
+        <div class="note">
+            <p>📝</p>
+
+            <p>Make sure you call your transition function when passing it to a widget,</p>
+
+            <p>like this 👉 <b>"fade()"</b></p>
+        </div>
+    </section>
+</section>

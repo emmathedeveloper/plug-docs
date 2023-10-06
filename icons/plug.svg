@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 200">
+  
+  <path
+  fill-opacity=".9" 
+  fill="dodgerblue"
+  style="transform: translateX(10%);"
+  d="M100 0 25 100 100 100 25 200Z"
+  />
+  
+  <path 
+  fill-opacity=".9" 
+  fill="gold"
+  d="M100 0 25 100 100 100 25 200Z"
+  />
+</svg>

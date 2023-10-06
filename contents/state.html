@@ -1,0 +1,171 @@
+
+<section class="content">
+
+<section>
+   <h2>State</h2>
+   
+   <p>
+      In Plug, to create reactive state, we instantiate a variable with a stream and data of any choice as it's value;
+   </p>
+   
+   <div class="code">
+      <code>
+   //a number stream
+   const count = stream(0)
+   
+   //a text stream
+   const text = stream('')
+   
+   //An Array stream
+   const numbers = stream([1 , 2 ,3])
+      </code>
+   </div>
+
+</section>    
+
+<section>
+   <p>
+      In Plug, we refer to state as <span class="highlight-primary">stream</span> 
+      because, we can have different components across different files <b><em>listen</em></b> 
+      to the same state. streams can also be used as local state within a component. Example below:
+   </p>
+
+</section>
+
+<div class="code">
+   <code>
+
+   const general_count = stream(0)
+   
+   function Component1(){
+      
+      const local_count = stream(0)
+      
+      return StatefulWidget({
+         
+         listen: [ general_count , local_count ]
+         
+         /* body of component */
+      })
+   }
+   
+   function Component2(){
+      
+      return StatefulWidget({
+         
+         listen: [ general_count ]
+         
+         /* body of component */
+      })
+   }
+   </code>
+</div>
+
+<section>
+   <p>
+      In the example above, <b>Component1</b> will update it's UI whenever the <b>general_stream</b> or it's <b>local_stream</b> changes, because <b>Component1</b> is <b><em>listening</em></b> to both streams, while <b>Component2</b> will only updates it's UI when the <b>general_stream</b> changes since that is the only stream it is <b><em>listening</em></b> to.
+   </p>
+
+   <div class="note">
+      <b>📝</b>
+
+      <p>A StatefulWidget will only run an update if one of the streams it is listening to changes.</p>
+   </div>
+
+
+   <h1>External Streams</h1>
+
+   <p>
+      We can also have streams in external files and import them for use in other files:
+   </p>
+
+   <div class="code">
+      <code>
+   //streams.js file
+   
+   export const global_count = stream(0)
+      </code>
+   </div>
+
+   <p>
+      In our component file, we can import this stream and use it:
+   </p>
+
+   <div class="code">
+      <code>
+   import global_count from './path-to-file/streams.js'
+   
+   export function Component(){
+      
+      return StatefulComponent({
+         
+         listen: [ global_count ],
+         
+         body: /*body of the component*/
+
+      })
+   }
+      </code>
+   </div>
+</section>
+
+<section>
+
+   <h1>.value , .update & .subscribe</h1>
+
+   <p>
+      We can get and set the value of a stream by calling <span class="highlight-primary">.value</span> on that stream
+   </p>
+
+   <div class="code">
+      <code>
+   const count = stream(0)
+   
+   console.log(count.value) //Logs 0 to the console
+   
+   count.value += 1
+   
+   console.log(count.value) //Logs 1 to the console
+      </code>
+   </div>
+
+   <p>
+      We can update a stream based on it's previous value by calling the <span class="highlight-primary">.update</span> method on it.
+   </p>
+
+   <div class="code">
+      <code>
+   //previous code...
+   
+   count.update(prevCount => prevCount * 2)
+   
+   //Logs 2 to the console.
+   console.log(count.value)
+      </code>
+   </div>
+
+   <p>
+
+      streams can also be subscribed to
+      by calling the <span class="highlight-primary">.subscribe</span>
+      method on the stream.
+   </p>
+
+   <div class="code">
+      <code>
+   count.subscribe((new_value) => {
+      console.log('count has changed')
+
+      console.log(new_value)
+   })
+      </code>
+   </div>
+
+   <p>
+      the <b>.subscribe</b> method of a stream takes in a callback function with the new value of the stream as a parameter and
+      returns an unsubscribe function that can be called when a Component is destroyed.
+   </p>
+
+</section>
+
+</section>

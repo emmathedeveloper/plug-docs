@@ -1,0 +1,250 @@
+
+<section class="content">
+    
+    <section>
+        <h2>Building a Counter</h2>
+
+        <p>Let's build our <b>Counter</b> component step by step.</p>
+
+        <p>
+            To build our component, we obviously need a function declaration or expression:
+        </p>
+    </section>
+
+    <div class="code">
+        <code>
+    function Counter(){
+        
+    }
+        </code>
+    </div>
+
+    <p>
+        What's a "counter" without "count"?
+        Let's initialize our <b>count</b> stream:
+    </p>
+
+    <div class="code">
+        <code>
+    function Counter(){
+        
+        const count = stream(0)
+    }
+        </code>
+    </div>
+
+    <p>
+        Now that's beginning to look like a "counter" 😉. 
+        Well we have count now, but we still need a way to display <b>count</b> to our users. That means we need a widget, and not just any widget! A StatfulWidget:
+    </p>
+
+    <div class="code">
+        <code>
+    function Counter(){
+        
+        const count = stream(0)
+        
+        return StatfulWidget({
+            
+        })
+    }
+        </code>
+    </div>
+
+    <p>
+        This StatefulWidget needs a body.
+    </p>
+
+    <div class="code">
+        <code>
+    function Counter(){
+        
+        const count = stream(0)
+        
+        return StatfulWidget({
+            
+            body: Container({
+                children: [
+                    
+                ]
+            })
+        })
+    }
+        </code>
+    </div>
+
+    <p>
+        Let's add a Button to display and update count.
+    </p>
+
+    <div class="code">
+        <code>
+    function Counter(){
+        
+        const count = stream(0)
+        
+        return StatfulWidget({
+            
+            body: Container({
+            children: [
+                
+                Button('count is ${count.value}' , {
+                    onClick: () => count.value += 1
+                })
+
+            ]
+            })
+        })
+    }
+        </code>
+    </div>
+
+    <p>
+        That's looking like a "counter" now 😊, 
+        but there's still something missing!.....Ahh yes 💡.... we need to <b><em>"listen"</em></b> to <b>count</b> for changes:
+    </p>
+
+    <div class="code">
+        <code>
+    function Counter(){
+        
+        const count = stream(0)
+        
+        return StatfulWidget({
+            
+            listen: [ count ]
+            
+            body: Container({
+            children: [
+
+                Button('count is ${count.value}' , {
+                    onClick: () => count.value += 1
+                })
+            ]
+            })
+        })
+    }
+        </code>
+    </div>
+
+    <p>
+        The moment of truth has come, run your app in the browser. 
+        Click on count and ...... hold up, wait a minute!, why am i not seeing my updates? what have i done wrong? 😟
+        calm down "Mr developer", there's still one more thing to talk about and that's what we call the <span class="highlight-primary">updater</span>.
+    </p>
+
+    <section>
+        <h1>Updater</h1>
+
+        <p>
+            If you compare the Text widget from our initial <b>Counter</b> component in the <b>src/components/Counter.js</b> file and the Text widget in our current <b>Counter</b>, 
+            you would notice a slight difference:
+        </p>
+    </section>
+
+    <div class="code">
+        <code>
+    //Button widget of initial Counter component
+    Button(() => `count is ${count.value}`)
+    
+    //Button widget of current Counter component
+    Button(`count is ${count.value}`)
+        </code>
+    </div>
+
+    <p>
+        The Button widget of our current <b>Counter</b>  has it's text value as a string, 
+        while the Button widget of the initial <b>Counter</b> has it's text value as a function that returns the desired string. 
+        That function is called an <b>"updater"</b>.
+    </p>
+
+    <p>
+        The job of the updater is to get the most recent content for the widget whenever there is any form of state change. This new content is used to compare the previous content for that field of the widget. If there is a change, the update appears, if not, the widget stay "as is". Still don't get it? heres an example:
+    </p>
+
+    <div class="code">
+        <code>
+    props: {
+        textContent: () => `my name is ${name.value}`
+    }
+        </code>
+    </div>
+
+    <p>
+        The above code is just the <b>props</b> section of a Bare widget.
+        whenever there is a state change, 
+        the function in front of the <b>textContent</b> property will be ran. 
+        If the return value from that function is different from the previous value of <b>textContent</b>, 
+        the <b>textContent</b> is updated with the new value, which also reflects in the DOM. 
+        That's why the function is called an "updater", 
+        it gets the most recent changes and set it to the concerning element.
+    </p>
+
+    <p>
+        We've talked enough , let's add an updater to our Text widget in our <b>Counter</b> component.
+    </p>
+
+    <div class="code">
+        <code>
+    function Counter(){
+        
+        const count = stream(0)
+        
+        return StatfulWidget({
+            
+            listen: [ count ]
+            
+            body: Container({
+
+            children: [
+                
+                Button(() => 'count is ${count.value}' , {
+                    onClick: () => count.value += 1
+                })
+            ]
+            })
+        })
+    }
+        </code>
+    </div>
+
+    <p>
+        Ahhhh, that's more like it, our "counter" now actually "counts". Click the button and you should see count update.
+        
+        Updaters can be used anywhere in a widget as long as it is used as a <b>prop</b> or an <b>attribute</b>, for example:
+    </p>
+
+    <div class="code">
+        <code>
+    Container({
+        className: () => selected.value ? 'selected' : ''
+    })
+        </code>
+    </div>
+
+    <p>
+        in the above code, whenever the <b>selected</b> stream changes, 
+        the updater at the <b>className</b> prop runs and the new value is used to set the <b>className</b> prop.
+    </p>
+
+    <div class="code">
+        <code>
+    Button('Logout' , {
+        style: {
+            display: () => user.value.loggedIn ? 'block' : 'none'
+        }
+    })
+        </code>
+    </div>
+
+    <p>
+        in the above code, whenever the <b>user</b> stream changes, the updater at the <b>display</b> property of the style object prop runs and the new value is used to set the "display" property of the style object.
+    </p>
+
+    <div class="note">
+        <p>📝</p>
+        <p>
+            If you know that a particular field would never change in your widget it is pointless using an updater there.
+        </p>
+    </div>
+</section>

@@ -1,0 +1,118 @@
+
+
+<section class="content">
+    
+    <section>
+        <h2>Component</h2>
+        
+        <p>A Component is just a function that returns either a StatefulWidget, a StatelessWidget or just a regular Widget.In this chapter, we would be talking about StatefulWidget and StatelessWidget.</p>
+    </section>
+
+<section>
+
+    <h1>StatefulWidget & StatelessWidget</h1>
+    
+    <div class="code">
+        <code> 
+  export default function Counter(){
+      
+      //Previous code in Counter.js
+      
+      return StatefulWidget({
+          
+          listen: [ count ]
+          
+          body: /*UI of the component*/
+      })
+  }
+        </code>
+    </div>
+</section>
+
+<section>
+    <p>
+        You would notice that in the above code, the <b>Counter</b> component is returning a <span class="highlight-primary">StatefulWidget</span>.
+        
+        The only difference between a <span class="highlight-primary">StatefulWidget</span> and a <span class="highlight-secondary">StatelessWidget</span> is the ability to listen to a stream, Apart from that, they have all other things in common.
+    </p>
+
+    <div class="code">
+        <code>
+  const name = stream('john')
+  
+  function StatefulComponent(){
+    
+    return StatefulWidget({
+      
+      listen: [ name ]
+      
+      body: /*UI of the component*/
+    })
+  }
+  
+  function StatelessComponent(){
+    
+    return StatelessWidget({
+      
+      body: /*UI of the component*/
+    })
+  }
+        </code>
+    </div>
+</section>
+
+<section>
+    <p>
+        In the code above, whenever the <b>name</b> stream changes , 
+        the UI of the StatefulWidget will be updated, because it has the ability to 
+        <span class="highlight-primary"><em>listen</em></span> to streams for changes,
+        but the StatelessWidget will remain <span class="highlight-primary">"as is"</span> because it cannot <span class="highlight-primary"><em>listen</em></span> to streams and therefore wouldn't be aware of updates for it's UI.
+    </p>
+    
+    <p>
+        <span class="highlight-primary"><b>BUT</b></span> 
+        there are times when this principle can be broken, 
+        for example, when you create a StatelessWidget and set the <b>allowParentalUpdate</b> property to <b>true</b>, if that StatelessWidget is a child of a StatefulWidget, any update from the StatefulWidget will cause the StatelessWidget to update it's UI:
+    </p>
+</section>
+
+
+<section>
+
+    <div class="code">
+        <code>
+
+  const name = stream("john")
+  
+  function StatefulComponent(){
+    
+    return StatefulWidget({
+      
+      listen: [ name ]
+      
+      body: StatelessComponent()
+
+    })
+  }
+  
+  
+  function StatelessComponent(){
+    
+    return StatelessWidget({
+      
+      allowParentalUpdate: true
+      
+      body: /*UI of the component*/
+
+    })
+  }
+        </code>
+    </div>
+
+    <p>
+        Now whenever the <b>name</b> stream changes, the StatefulWidget will update, causing the StatelessWidget to also update.
+    </p>
+    
+</section>
+
+</section>

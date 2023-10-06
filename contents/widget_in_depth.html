@@ -1,0 +1,153 @@
+
+<section class="content">
+    
+    <section>
+        <h2>Widgets in depth</h2>
+
+        <p>
+            The last time we talked about widgets, we described them as objects that build an HTMLElement based on certain arguments or instructions:
+        </p>
+    </section>
+
+    <div class="code">
+        <code>
+    Widget({
+        tag: 'button',
+        props:{
+            className: 'btn-primary',
+            textContent: 'Hello World'
+        },
+        attributes:{
+            id: 1
+        },
+        events:{
+            onClick: () => console.log('button clicked')
+        }
+    })
+        </code>
+    </div>
+
+    <p>
+        This is what the above code would result to in the DOM:
+    </p>
+
+    <div class="code">
+        <code data-html>
+<button 
+    class="btn-primary" 
+    id="1"
+>Hello World</button>
+
+<!---Logs "button clicked" to the console when clicked--->
+        </code>
+    </div>
+
+    <div class="note">
+        <p>📝</p>
+
+        <p>
+            we use "className" instead of "class" because in JavaScript, "class" is a reserved keyword
+        </p>
+    </div>
+
+    <section>
+        <p>
+            You might wonder what the difference is between the <span class="highlight-primary"><em>props</em></span> and the <span class="highlight-primary"><em>attributes</em></span> 
+            in the widget of the above code? well, if you set somethings as 
+            an <b>attribute</b> instead of <b>prop</b> and vice versa, 
+            you might not get your desired result, for example , moving 
+            the <b>textContent</b> property to the <b>attributes</b> section would result in this:
+        </p>
+
+        <div class="code">
+            <code data-html>
+<button 
+    class="btn-primary" 
+    id="1" 
+    textContent="Hello World"
+></button>
+            </code>
+        </div>
+
+        <p>
+            Trust me, you don't want that 👆 wierdness at all. 
+            So it is best to know what should go in the <b>props</b> section and what should go in the <b>attributes</b> section.
+        </p>
+
+    </section>
+
+
+    <section>
+        <p>
+            The widget arguments also has a property called <b>children</b> that takes in other widgets to render as children of the main widget:
+        </p>
+
+        <div class="code">
+            <code>  
+    Widget({
+
+        tag: 'div',
+
+        children: [
+
+            Widget({
+                tag: 'h1',
+                props: {
+                    textContent: 'I love Pizza 🍕',
+                }
+            })
+        ]
+    })
+            </code>
+        </div>
+
+        <p>
+            Below, is what the above code would result to in the DOM:
+        </p>
+
+        <div class="code">
+            <code data-html>
+    <div>
+        <h1>I love Pizza 🍕</h1>
+    </div>
+            </code>
+        </div>
+    </section>
+
+    <section>
+        <p>
+            As you might have noticed, that might just be too much code to create a basic <b>div</b> with an <b>h1</b> that says "Hello World". 
+            That's why Plug has pre-made widgets to make life more bearable. We would be talking about these widgets in the next chapter.
+        </p>
+
+        <!-- <div class="code">
+            <code>
+                Text('hello' , { type: 'h1' })
+                
+                Button('click me' , {
+                  onClick: () => console.log('button clicked')
+                })
+                
+                Container({
+                  children: [
+                     Text('Pizza'),
+                     
+                     Text('Second child'),
+                     
+                     Container({
+                       children: [
+                        Button('A button')
+                       ]
+                     })
+                     
+                  ]
+                })
+            </code>
+        </div> -->
+    </section> 
+
+    <!-- <p>
+        since we now have an idea of how StatefulWidgets and StatelessWidgets, streams and regular widgets work, let's build our **Entry** component in our **App.js** step by step.
+    </p> -->
+
+</section>

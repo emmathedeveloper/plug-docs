@@ -1,0 +1,244 @@
+
+<section class="content">
+  
+  <section>
+    <h2>Logic Fragments</h2>
+    <p>
+      As the name implies, they are Fragments that logically render widgets. We have four in total and they are:
+      <span class="highlight-primary">$if-$elseif-else</span>,
+      <span class="highlight-primary">$each</span>,
+      <span class="highlight-primary">$await</span> and
+      <span class="highlight-primary">$html</span>
+    </p>
+  </section>
+  
+  <section>
+    <h1>$if-$elseif-$else</h1>
+    
+    <p>
+      This logic fragment behaves like a regular "if else" statement.
+    </p>
+    <p>
+      It renders a widget if certain conditions are met.
+    </p>
+    
+    <div class="code">
+      <code>
+  Container({
+
+    children: [
+
+        $if({
+          condition: () => signedIn === true,
+          widget: Text('Welcome User')
+        })
+    ]
+  })
+      </code>
+    </div>
+
+    <p>
+      We can add an "$elseif" to that:
+    </p>
+
+    <div class="code">
+      <code>
+  Container({
+
+    children: [
+
+        $if({
+
+          condition: () => signedIn === true,
+          widget: Text('Welcome User')
+
+        }).$elseif({
+
+          condition: () => signedIn === false && guest === true,
+          widget: Text('Welcome Guest')
+
+        })
+    ]
+  })
+      </code>
+    </div>
+
+    <div class="note--tip">
+      <p>💡</p>
+
+      <p>You can chain as many "$elseif" together</p>
+    </div>
+
+    <p>
+      You can render a default by using "$else":
+    </p>
+
+    <div class="code">
+      <code>
+  Container({
+
+    children: [
+
+        $if({
+
+          condition: () => signedIn === true,
+          widget: Text('Welcome User')
+
+        }).$elseif({
+
+          condition: () => signedIn === false && guest === true,
+          widget: Text('Welcome Guest')
+
+        }).$else( Text('Please sign in or continue as a guest') )
+    ]
+  })
+      </code>
+    </div>
+
+    <div class="note">
+      <p>📝</p>
+
+      <p>
+        Notice that we used an updater for the value of the <b>condition</b> field. If you don't use an updater, the condition will only run once.
+      </p>
+    </div>
+
+  </section>
+
+  <section>
+    <h1>$each</h1>
+
+    <p>
+      This logic fragment is used to render a list of widgets based on an Array of values.
+    </p>
+
+    <div class="code">
+      <code>
+  Container({
+
+    children:[
+    
+      $each({
+        values: [ 1 , 2 , 3 ],
+        widget: (num , index) => Text(`item ${num}`)
+      })
+    ]
+  })      
+      </code>
+    </div>
+
+    <p>
+      The <b>values</b> field takes an Array or a stream with an Array as it's value. <br />
+      The <b>widget</b> field takes a function that has two parameters , (the item from that index and the index itself), which returns a widget.
+    </p>
+
+    
+    <div class="code">
+      <code>
+  
+  const numbers = stream([ 1 , 2 , 3 ])
+
+  Container({
+
+    children:[
+    
+      $each({
+        values: numbers,
+        widget: (num , index) => Text(`item ${num}`)
+      })
+    ]
+  })      
+</code>
+</div>
+
+<p>
+  If you supply the <b>value</b> field with a stream that has an Array as it's value , like in the code above , the <b>$each</b> logic fragment will automatically run an update whenever that stream changes. It doesn't need an updater.
+</p>
+</section>
+
+<section>
+  <h1>$await</h1>
+
+  <p>
+    This is a <b>Promise based</b> logic fragment. It renders certain widgets based on the state of a promise:
+  </p>
+
+  <div class="code">
+    <code>
+  Container({
+
+    children:[
+    
+      $await({
+        promise: somePromise(),
+        pending: Text('Still waiting...'),
+        fulfilled: result => Text(`Done! result: ${result}`),
+        rejected: reason => Text(`Failed reason: ${reason}`)
+      })
+    ]
+  })    
+    </code>
+  </div>
+
+  <p>
+    The <b>promise</b> field takes in a Promise. <br>
+    The <b>pending</b> field takes in a widget to show while the promise is still resolving. <br>
+    The <b>fulfilled</b> field takes in a function that returns a widget if the promise is fulfilled. <br>
+    The <b>rejected</b> field takes in a function that returns a widget if the promise gets rejected.
+  </p>
+</section>
+
+<section>
+  <h1>$html</h1>
+
+  <p>
+    This widget is used to parse and render raw html strings to the DOM:
+  </p>
+
+  <div class="code">
+    <code data-html>
+  Container({
+
+    children:[
+
+      $html('<h1>Hello Pizza 🍕</h1>')
+    ]
+  })    
+    </code>
+  </div>
+
+  <p>If you pass in a stream as it's value, the <b>$html</b> logic fragment will automatically run an update whenever that stream changes. It doesn't need an updater:</p>
+
+  <div class="code">
+    <code data-html>
+
+  const htmlString = stream('<h1>Hello Pizza 🍕</h1>')
+
+  Container({
+
+    children:[
+
+      $html(htmlString)
+    ]
+  })    
+    </code>
+  </div>
+
+  <div class="note">
+    <p>📝</p>
+
+    <p>
+      <b>DO NOT</b> pass in text nodes as a value to the <b>$html</b> logic fragment, They won't be rendered. for example, <br> 
+      
+      <div>
+        <code data-html>
+          '<h1>Hi</h1> my name is john'
+        </code> 
+      </div> <br>
+
+      The <b>h1</b> that has <b>Hi</b> as it's text would be rendered, but 'my name is john' won't be rendered. This would be fixed in coming versions of Plug.
+    </p>
+  </div>
+</section>
+
+</section>

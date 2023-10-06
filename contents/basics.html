@@ -1,0 +1,40 @@
+
+<section class="content">
+
+<section>
+    <h2>Basics</h2>
+    
+    <p>When you open your <b>Counter.js</b> file in the <b>src/components/Counter</b> folder of your project, this is what you see:</p>
+</section>
+
+
+<div class="code">
+    <code>   
+    export default function Counter(){
+
+    const count = stream(0)
+
+    return StatefulComponent({
+      
+      listen: [ count ]
+      
+      body: Container({
+
+        children: [
+          
+          Button(() => `${count.value} is count` , {
+            onClick: () => count.value += 1
+          })
+
+        ]
+      })
+    })
+    }
+    </code>
+</div>
+
+<p>
+    This might look a little "too much" at first but we are going to break this code into chunks and get to understand with each passing chapter.
+</p>
+
+</section>

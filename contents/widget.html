@@ -1,0 +1,49 @@
+
+<section class="content">
+    
+    <section>
+        <h2>Widget</h2>
+
+        <p>
+            In Plug, A widget is a function that takes in an object containing information on how to build an Element.
+        </p>
+
+        <div class="code">
+            <code>
+    Widget({
+        tag: 'button',
+
+        props:{
+            className: 'btn-primary',
+            textContent: 'Hello World'
+        },
+
+        attributes:{
+            id: 1
+        }
+    })
+            </code>
+        </div>
+    </section>
+
+
+    <p>
+        To See this created widget in the DOM, we just have to call the <span class="highlight-primary">.mount</span>  method on the widget with a provided root,
+    </p>
+
+    <div class="code">
+        <code>
+    const container = document.querySelector('#app')
+    
+    Widget({
+        /* configuration */
+    }).mount({ root: container })
+        </code>
+    </div>
+
+    <p>
+        This is Plug at it's most basic form. There are basic widgets which are pre made when you install plug. A few examples are, <b>Text</b>, <b>Button</b>, <b>Container</b>, <b>Anchor</b>  and others.
+        
+        We would talk more indepth about widgets in the next chapter.
+    </p>
+</section>

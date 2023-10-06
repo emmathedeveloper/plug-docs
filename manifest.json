@@ -1,0 +1,28 @@
+{
+    "short_name": "Plug",
+    "name": "Plug",
+    "description": "A PWA built with Plug",
+    "icons": [
+      {
+        "src": "./icons/icon.ico",
+        "sizes": "64x64 32x32 24x24 16x16",
+        "type": "image/x-icon"
+      },
+      {
+        "src": "./icons/Square150x150Logo.png",
+        "type": "image/png",
+        "sizes": "150x150",
+        "purpose": "any maskable"
+      },
+      {
+        "src": "./icons/Square310x310Logo.png",
+        "type": "image/png",
+        "sizes": "310x310"
+      }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#fff",
+    "background_color": "#fff"
+}
+    

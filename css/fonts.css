@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'fira-code';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../assets/fonts/FiraCode-Medium.ttf');
+}
+
+*, *::placeholder{
+    font-family: 'fira-code';
+}

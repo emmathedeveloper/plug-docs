@@ -1,0 +1,1948 @@
+
+<section class="content">
+    
+    <section>
+        <h2>Out of The Box</h2>
+
+        <p>
+            There are pre-made widgets in Plug, so you don't go through the stress of coding out a Bare widget. Let's see them.
+        </p>
+
+        <div class="note">
+            <p>📝</p>
+
+            <p>
+                There isn't a widget for every HTMLElement <b>YET</b>, just the essentials. Therefore, you shouldn't discard the usage of a Bare widget. Especially if you are going for something custom.
+            </p>
+        </div>
+    </section>
+
+    <section id="general">
+        <h1>General</h1>
+
+        <p>There are configurations that are common to all widgets, see them below</p>
+        
+        <div class="table">
+            <div class="table__row">
+                <div class="table__data">
+                    <p>name</p>
+                </div>
+                <div class="table__data">
+                    <p>type</p>
+                </div>
+                <div class="table__data">
+                    <p>under</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>id</p>
+                </div>
+                <div class="table__data">
+                    <p>string | (() => string)</p>
+                </div>
+                <div class="table__data">
+                    <p>props</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>className</p>
+                </div>
+                <div class="table__data">
+                    <p>string | (() => string)</p>
+                </div>
+                <div class="table__data">
+                    <p>props</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>ref</p>
+                </div>
+                <div class="table__data">
+                    <p>PlugRef</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>transition</p>
+                </div>
+                <div class="table__data">
+                    <p>TransitionFunction</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>style</p>
+                </div>
+                <div class="table__data">
+                    <p>CSSStyleDecleration | {}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="isolate">
+        <h1>Text</h1>
+
+        <p>It acts as a <b>HTMLParagraphElement</b> by default if no type is specified in the config.</p>
+
+        <div class="code">
+            <code>
+    Text('Hello' , config)            
+            </code>
+        </div>
+
+        <p>It uses the <b data-scroll-to="general">General configurations</b></p>
+    </section>
+
+    <section class="isolate">
+        <h1>Button</h1>
+
+        <p>This acts as a <b>HTMLButtonElement</b>.</p>
+
+        <div class="code">
+            <code>
+    Button('Hello' , config)            
+            </code>
+        </div>
+
+        <h3>Config</h3>
+
+        <div class="table">
+            <div class="table__row">
+                <div class="table__data">
+                    <p>name</p>
+                </div>
+                <div class="table__data">
+                    <p>type</p>
+                </div>
+                <div class="table__data">
+                    <p>under</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>disabled</p>
+                </div>
+                <div class="table__data">
+                    <p>boolean | (() => boolean)</p>
+                </div>
+                <div class="table__data">
+                    <p>props</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>onClick</p>
+                </div>
+                <div class="table__data">
+                    <p>(e: any) => void</p>
+                </div>
+                <div class="table__data">
+                    <p>events</p>
+                </div>
+            </div>
+        </div>
+
+        <p>It extends the <b data-scroll-to="general">General configuration</b></p>
+    </section>
+
+    <section id="container" class="isolate">
+        <h1>Container</h1>
+
+        <p>This widget acts as a <b>HTMLDivElement</b> or <b>HTMLSectionElement</b>. It is used for rendering other child widgets.</p>
+
+        <div class="code">
+            <code>
+    Container(config)            
+            </code>
+        </div>
+
+        <h3>Config</h3>
+
+        <div class="table">
+            <div class="table__row">
+                <div class="table__data">
+                    <p>name</p>
+                </div>
+                <div class="table__data">
+                    <p>type</p>
+                </div>
+                <div class="table__data">
+                    <p>under</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>children</p>
+                </div>
+                <div class="table__data">
+                    <p>(PlugWidget | PlugFragment)[]</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>type</p>
+                </div>
+                <div class="table__data">
+                    <p>'div' | 'section'</p>
+                </div>
+            </div>
+        </div>
+
+        <p>It extends the <b data-scroll-to="general">General configuration</b></p>
+    </section>
+
+    <section class="isolate">
+        <h1>Anchor</h1>
+
+        <p>This widget acts as an <b>HTMLAnchorElement</b>.</p>
+
+        <div class="code">
+            <code>
+    Anchor(config)            
+            </code>
+        </div>
+
+        <h3>Config</h3>
+
+        <div class="table">
+            <div class="table__row">
+                <div class="table__data">
+                    <p>name</p>
+                </div>
+                <div class="table__data">
+                    <p>type</p>
+                </div>
+                <div class="table__data">
+                    <p>under</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>child</p>
+                </div>
+                <div class="table__data">
+                    <p>PlugWidget | string</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>href</p>
+                </div>
+                <div class="table__data">
+                    <p>string</p>
+                </div>
+                <div class="table__data">
+                    <p>props</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>target</p>
+                </div>
+                <div class="table__data">
+                    <p>'_blank' | '_top' | '_parent' | '_self' </p>
+                </div>
+                <div class="table__data">
+                    <p>props</p>
+                </div>
+            </div>
+        </div>
+
+        <p>It extends the <b data-scroll-to="general">General configuration</b></p>
+    </section>
+
+    <section class="isolate">
+        <h1>Input</h1>
+
+        <p>This widget acts as an <b>HTMLInputElement</b>.</p>
+
+        <div class="code">
+            <code>
+    Input(config)            
+            </code>
+        </div>
+
+        <h3>Config</h3>
+
+        <div class="table">
+            <div class="table__row">
+                <div class="table__data">
+                    <p>name</p>
+                </div>
+                <div class="table__data">
+                    <p>type</p>
+                </div>
+                <div class="table__data">
+                    <p>under</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>type</p>
+                </div>
+                <div class="table__data">
+                    <p>string | 'text' | 'file' | 'password' | 'email' | 'button' | 'checkbox' | 'color' | 'date' | 'datetime' | 'datetime-local' | 'hidden' | 'image' | 'month' | 'number' | 'radio' | 'range' | 'reset' | 'search' | 'submit' | 'tel' | 'text' | 'time' | 'url' | 'week'
+                    </p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>value</p>
+                </div>
+                <div class="table__data">
+                    <p>string | (() => string)</p>
+                </div>
+                <div class="table__data">
+                    <p>props</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>placeholder</p>
+                </div>
+                <div class="table__data">
+                    <p>string | (() => string)</p>
+                </div>
+                <div class="table__data">
+                    <p>props</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>disabled</p>
+                </div>
+                <div class="table__data">
+                    <p>boolean | (() => boolean)</p>
+                </div>
+                <div class="table__data">
+                    <p>props</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>multiple</p>
+                </div>
+                <div class="table__data">
+                    <p>boolean | (() => boolean)</p>
+                </div>
+                <div class="table__data">
+                    <p>props</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>autoFocus</p>
+                </div>
+                <div class="table__data">
+                    <p>boolean</p>
+                </div>
+                <div class="table__data">
+                    <p>props</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>onChange</p>
+                </div>
+                <div class="table__data">
+                    <p>(e: any) => void</p>
+                </div>
+                <div class="table__data">
+                    <p>events</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>onInput</p>
+                </div>
+                <div class="table__data">
+                    <p>(e: any) => void</p>
+                </div>
+                <div class="table__data">
+                    <p>events</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>onBlur</p>
+                </div>
+                <div class="table__data">
+                    <p>(e: any) => void</p>
+                </div>
+                <div class="table__data">
+                    <p>events</p>
+                </div>
+            </div>
+        </div>
+
+        <p>It extends the <b data-scroll-to="general">General configuration</b></p>
+    </section>
+
+    <section class="isolate">
+        <h1>TextArea</h1>
+
+        <p>This widget acts as an <b>HTMLTextAreaElement</b>.</p>
+
+        <div class="code">
+            <code>
+    TextArea(config)            
+            </code>
+        </div>
+
+        <h3>Config</h3>
+
+        <div class="table">
+            <div class="table__row">
+                <div class="table__data">
+                    <p>name</p>
+                </div>
+                <div class="table__data">
+                    <p>type</p>
+                </div>
+                <div class="table__data">
+                    <p>under</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>type</p>
+                </div>
+                <div class="table__data">
+                    <p>string | 'text' | 'file' | 'password' | 'email' | 'button' | 'checkbox' | 'color' | 'date' | 'datetime' | 'datetime-local' | 'hidden' | 'image' | 'month' | 'number' | 'radio' | 'range' | 'reset' | 'search' | 'submit' | 'tel' | 'text' | 'time' | 'url' | 'week'
+                    </p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>rows</p>
+                </div>
+                <div class="table__data">
+                    <p>string | number</p>
+                </div>
+                <div class="table__data">
+                    <p>attributes</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>cols</p>
+                </div>
+                <div class="table__data">
+                    <p>string | number</p>
+                </div>
+                <div class="table__data">
+                    <p>attributes</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>value</p>
+                </div>
+                <div class="table__data">
+                    <p>string | (() => string)</p>
+                </div>
+                <div class="table__data">
+                    <p>props</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>placeholder</p>
+                </div>
+                <div class="table__data">
+                    <p>string | (() => string)</p>
+                </div>
+                <div class="table__data">
+                    <p>props</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>disabled</p>
+                </div>
+                <div class="table__data">
+                    <p>boolean | (() => boolean)</p>
+                </div>
+                <div class="table__data">
+                    <p>props</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>multiple</p>
+                </div>
+                <div class="table__data">
+                    <p>boolean | (() => boolean)</p>
+                </div>
+                <div class="table__data">
+                    <p>props</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>autoFocus</p>
+                </div>
+                <div class="table__data">
+                    <p>boolean</p>
+                </div>
+                <div class="table__data">
+                    <p>props</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>onChange</p>
+                </div>
+                <div class="table__data">
+                    <p>(e: any) => void</p>
+                </div>
+                <div class="table__data">
+                    <p>events</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>onInput</p>
+                </div>
+                <div class="table__data">
+                    <p>(e: any) => void</p>
+                </div>
+                <div class="table__data">
+                    <p>events</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>onBlur</p>
+                </div>
+                <div class="table__data">
+                    <p>(e: any) => void</p>
+                </div>
+                <div class="table__data">
+                    <p>events</p>
+                </div>
+            </div>
+        </div>
+
+        <p>It extends the <b data-scroll-to="general">General configuration</b></p>
+    </section>
+
+    <section class="isolate">
+        <h1>Image</h1>
+
+        <p>This widget acts as an <b>HTMLImageElement</b>.</p>
+
+        <div class="code">
+            <code>
+    Image(config)            
+            </code>
+        </div>
+
+        <h3>Config</h3>
+
+        <div class="table">
+            <div class="table__row">
+                <div class="table__data">
+                    <p>name</p>
+                </div>
+                <div class="table__data">
+                    <p>type</p>
+                </div>
+                <div class="table__data">
+                    <p>under</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>src</p>
+                </div>
+                <div class="table__data">
+                    <p> string | (() => string) </p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>height</p>
+                </div>
+                <div class="table__data">
+                    <p>string | (() => string)</p>
+                    <p>number | (() => number)</p>
+                </div>
+                <div class="table__data">
+                    <p>attributes</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>width</p>
+                </div>
+                <div class="table__data">
+                    <p>string | (() => string)</p>
+                    <p>number | (() => number)</p>
+                </div>
+                <div class="table__data">
+                    <p>attributes</p>
+                </div>
+            </div>
+        </div>
+
+        <p>It extends the <b data-scroll-to="general">General configuration</b></p>
+    </section>
+
+    <section class="isolate">
+        <h1>Interactive</h1>
+        
+        <p>This widget is the same as the <b data-scroll-to="containe">Container</b> widget, but is more interactive with events.</p>
+
+        <div class="code">
+            <code>
+    Interactive(config)            
+            </code>
+        </div>
+
+        <h3>Config</h3>
+
+        <div class="table">
+            <div class="table__row">
+                <div class="table__data">
+                    <p>name</p>
+                </div>
+                <div class="table__data">
+                    <p>type</p>
+                </div>
+                <div class="table__data">
+                    <p>under</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>child</p>
+                </div>
+                <div class="table__data">
+                    <p>(PlugWidget | PlugFragment)</p>
+                </div>
+            </div>
+            <div class="table__row">
+                <div class="table__data">
+                    <p>type</p>
+                </div>
+                <div class="table__data">
+                    <p>'div' | 'section'</p>
+                </div>
+            </div>
+            
+        <div class="table__row">
+            <div class="table__data">
+                <p>onBeforexrselect</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onAbort</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onBeforeinput</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onBlur</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onCancel</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onCanplay</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onCanplaythrough</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onChange</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onClick</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onClose</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onContextlost</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onContextmenu</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onContextrestored</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onCuechange</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onDblclick</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onDrag</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onDragend</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onDragenter</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onDragleave</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onDragover</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onDragstart</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onDrop</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onDurationchange</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onEmptied</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onEnded</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onError</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onFocus</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onFormdata</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onInput</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onInvalid</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onKeydown</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onKeypress</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onKeyup</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onLoad</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onLoadeddata</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onLoadedmetadata</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onLoadstart</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onMousedown</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onMouseenter</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onMouseleave</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onMousemove</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onMouseout</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onMouseover</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onMouseup</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onMousewheel</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onPause</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onPlay</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onPlaying</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onProgress</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onRatechange</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onReset</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onResize</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onScroll</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onSecuritypolicyviolation</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onSeeked</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onSeeking</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onSelect</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onSlotchange</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onStalled</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onSubmit</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onSuspend</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onTimeupdate</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onToggle</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onVolumechange</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onWaiting</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onWebkitanimationend</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onWebkitanimationiteration</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onWebkitanimationstart</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onWebkittransitionend</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onWheel</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onAuxclick</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onGotpointercapture</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onLostpointercapture</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onPointerdown</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onPointermove</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onPointerrawupdate</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onPointerup</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onPointercancel</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onPointerover</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onPointerout</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onPointerenter</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onPointerleave</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onSelectstart</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onSelectionchange</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onAnimationend</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onAnimationiteration</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onAnimationstart</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onTransitionrun</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onTransitionstart</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onTransitionend</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onTransitioncancel</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        <div class="table__row">
+            <div class="table__data">
+                <p>onTouchstart</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        <div class="table__row">
+            <div class="table__data">
+                <p>onTouchend</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        <div class="table__row">
+            <div class="table__data">
+                <p>onTouchcancel</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onCopy</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onCut</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onPaste</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onContentvisibilityautostatechange</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onScrollend</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onBeforetoggle</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onBeforematch</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onBeforecopy</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onBeforecut</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onBeforepaste</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onSearch</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onFullscreenchange</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onFullscreenerror</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onWebkitfullscreenchange</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        <div class="table__row">
+            <div class="table__data">
+                <p>onWebkitfullscreenerror</p>
+            </div>
+            <div class="table__data">
+                <p>(e: any) => void</p>
+            </div>
+            <div class="table__data">
+                <p>events</p>
+            </div>
+        </div>
+        
+        </div>
+
+        <p>It extends the <b data-scroll-to="general">General configuration</b></p>
+    </section>
+
+</section>

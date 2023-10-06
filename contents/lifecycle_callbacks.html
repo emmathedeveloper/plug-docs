@@ -1,0 +1,47 @@
+
+<section class="content">
+
+    <section>
+        <h2>Lifecycle Callbacks</h2>
+
+        <p>
+            Both The <b>StatefulWidget</b> and <b>StatelessWidget</b> have three major lifecycle callbacks:
+        </p>
+    </section>
+
+    <div class="code">
+        <code>
+    StatefulWidget({
+        onBeforeMount: () => console.log('Widget will soon mount'),
+        
+        onMount: () => console.log('Widget has Mounted'),
+
+        onDestroy: () => console.log('Widget has been destroyed'),
+    })
+        </code>
+    </div>
+
+    <section>
+        <h1>onBeforeMount</h1>
+
+        <p>
+            This callback is ran before the widget is mounted on the DOM. If your widget depends on data from an external source, you can fetch those data in this callback.
+        </p>
+    </section>
+
+    <section>
+        <h1>onMount</h1>
+
+        <p>
+            This callback is ran immediately after the widget is mounted on the DOM.
+        </p>
+    </section>
+
+    <section>
+        <h1>onDestroy</h1>
+
+        <p>
+            This callback is ran immediately after the widget is removed from the DOM.
+        </p>
+    </section>
+</section>
